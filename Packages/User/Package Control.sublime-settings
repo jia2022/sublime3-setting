@@ -1,0 +1,15 @@
+{
+	"installed_packages":
+	[
+		"BracketHighlighter",
+		"Jade",
+		"jQuery",
+		"jQueryDocs",
+		"JsFormat",
+		"Markdown Extended",
+		"Markdown Preview",
+		"MarkdownEditing",
+		"SideBarEnhancements",
+		"Stylus"
+	]
+}

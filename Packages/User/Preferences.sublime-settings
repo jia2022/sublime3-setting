@@ -1,0 +1,11 @@
+{
+	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
+	"font_size": 11,
+	"ignored_packages":
+	[
+		"Vintage",
+		"Markdown"
+	],
+	"tab_size": 2,
+	"word_wrap": true
+}
