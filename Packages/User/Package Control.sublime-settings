@@ -2,6 +2,10 @@
 	"installed_packages":
 	[
 		"BracketHighlighter",
+		"CSS Format",
+		"CSS3_Syntax",
+		"HTML Compressor",
+		"HTMLBeautify",
 		"Jade",
 		"jQuery",
 		"jQueryDocs",
