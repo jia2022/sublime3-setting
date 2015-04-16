@@ -5,6 +5,7 @@ sublime3-setting文件包。
 保险起见，对于新手适用于新安装的系统，要是做了很多操作，那就不好说了
 
 1.安装拼音fcitx这个字体引擎.
+
     国内一般换成163的源，更新，执行:
     sudo install fcitx fcitx-pinyin 
     到http://pinyin.sogou.com/linux/?r=pinyin下载deb包安装
@@ -29,14 +30,12 @@ sublime3-setting文件包。
     sublime-imfix.c
     Use LD_PRELOAD to interpose some function to fix sublime input method support for linux.
     By Cjacker Huang <jianzhong.huang at i-soft.com.cn>
-
     gcc -shared -o libsublime-imfix.so sublime_imfix.c  `pkg-config --libs --cflags gtk+-2.0` -fPIC
     LD_PRELOAD=./libsublime-imfix.so sublime_text
     */
     #include <gtk/gtk.h>
     #include <gdk/gdkx.h>
     typedef GdkSegment GdkRegionBox;
-
     struct _GdkRegion
     {
       long size;
@@ -44,9 +43,7 @@ sublime3-setting文件包。
       GdkRegionBox *rects;
       GdkRegionBox extents;
     };
-
     GtkIMContext *local_context;
-
     void
     gdk_region_get_clipbox (const GdkRegion *region,
                 GdkRectangle    *rectangle)
@@ -69,10 +66,8 @@ sublime3-setting文件包。
             gtk_im_context_set_cursor_location(local_context, rectangle);
       }
     }
-
     //this is needed, for example, if you input something in file dialog and return back the edit area
     //context will lost, so here we set it again.
-
     static GdkFilterReturn event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer im_context)
     {
         XEvent *xev = (XEvent *)xevent;
@@ -83,6 +78,7 @@ sublime3-setting文件包。
         }
         return GDK_FILTER_CONTINUE;
     }
+
 
     void gtk_im_context_set_client_window (GtkIMContext *context,
               GdkWindow    *window)
@@ -129,27 +125,27 @@ sublime3-setting文件包。
     Categories=TextEditor;Development;Utility;
     StartupNotify=true
     Actions=Window;Document;
-
     X-Desktop-File-Install-Version=0.22
-
     [Desktop Action Window]
     Name=New Window
     Exec=bash -c 'LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so /opt/sublime_text/sublime_text' -n
     OnlyShowIn=Unity;
-
     [Desktop Action Document]
     Name=New File
     Exec=bash -c 'LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so /opt/sublime_text/sublime_text' --command new_file
     OnlyShowIn=Unity;
+    
+    
 
 到此完工，可以正常输入中文。
 
 8.可选，使用sublime配置文件
 
 务必至少打开一次sublime text 3, 并且在关闭状态下执行以下操作
-cd ~/.config/sublime-text-3
-rm -rf Installed\ Packages
-rm Packages/User/Package\ Control.sublime-settings
-rm Packages/User/Preferences.sublime-settings
-git clone https://github.com/jia2022/sublime3-setting.git
-cp -R sublime3-setting/* .
+
+    cd ~/.config/sublime-text-3
+    rm -rf Installed\ Packages
+    rm Packages/User/Package\ Control.sublime-settings
+    rm Packages/User/Preferences.sublime-settings
+    git clone https://github.com/jia2022/sublime3-setting.git
+    cp -R sublime3-setting/* .
