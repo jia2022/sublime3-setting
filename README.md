@@ -135,8 +135,6 @@ sublime3-setting文件包。
     Exec=bash -c 'LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so /opt/sublime_text/sublime_text' --command new_file
     OnlyShowIn=Unity;
     
-    
-
 到此完工，可以正常输入中文。
 
 8.可选，使用sublime配置文件
