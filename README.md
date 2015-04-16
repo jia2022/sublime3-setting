@@ -1,27 +1,29 @@
 # sublime3-setting
-sublime3-setting文件包。具体的使用
+sublime3-setting文件包。
 
-适用于新安装的系统，要是做了很多操作，那就不好说了
 
-    换成163的源，更新，
-    language support里添加中文，界面语言是不必设为中文的
+保险起见，对于新手适用于新安装的系统，要是做了很多操作，那就不好说了
+
+1.安装拼音fcitx这个字体引擎.
+    国内一般换成163的源，更新，执行:
+    sudo install fcitx fcitx-pinyin 
     到http://pinyin.sogou.com/linux/?r=pinyin下载deb包安装
     language support里输入方式选为fcitx
     重启，sougoupinyin 安装成功
 
-    安装sublime text 3
+2.安装sublime text 3
 
     sudo add-apt-repository ppa:webupd8team/sublime-text-3
     sudo apt-get update
     sudo apt-get install sublime-text-installer
 
-    解决中文输入问题
+3.解决中文输入问题
 
     cd /opt/sublime_text
     sudo touch sublime_imfix.c
     sudo gedit sublime_imfix.c
 
-    然后把以下内容粘贴进去并且保存
+4.然后把以下内容粘贴进去并且保存
 
     /*
     sublime-imfix.c
@@ -103,16 +105,16 @@ sublime3-setting文件包。具体的使用
       gdk_window_add_filter (window, event_filter, context); 
     }
 
-    再执行：
+5.再执行：
 
     sudo apt-get install build-essential libgtk2.0-dev
     sudo gcc -shared -o libsublime-imfix.so sublime_imfix.c  `pkg-config --libs --cflags gtk+-2.0` -fPIC
 
-    再编辑sublime快捷方式
+6.再编辑sublime快捷方式
 
     sudo gedit /usr/share/applications/sublime-text.desktop
 
-    把以下内容替换原来内容并且保存
+7.把以下内容替换原来内容并且保存
 
     [Desktop Entry]
     Version=1.0
@@ -140,8 +142,14 @@ sublime3-setting文件包。具体的使用
     Exec=bash -c 'LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so /opt/sublime_text/sublime_text' --command new_file
     OnlyShowIn=Unity;
 
-    完工。
+到此完工，可以正常输入中文。
 
-    可选，使用我的sublime配置文件
+8.可选，使用sublime配置文件
 
-    务必至少打开一次sublime text 3, 并且在关闭状态下执行以下操作
+务必至少打开一次sublime text 3, 并且在关闭状态下执行以下操作
+cd ~/.config/sublime-text-3
+rm -rf Installed\ Packages
+rm Packages/User/Package\ Control.sublime-settings
+rm Packages/User/Preferences.sublime-settings
+git clone https://github.com/jia2022/sublime3-setting.git
+cp -R sublime3-setting/* .
