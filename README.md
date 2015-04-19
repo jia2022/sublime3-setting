@@ -6,7 +6,6 @@ sublime3-setting文件包。
 
 1.安装拼音fcitx这个字体引擎.
 
-    国内一般换成163的源，更新，执行:
     sudo install fcitx fcitx-pinyin 
     到http://pinyin.sogou.com/linux/?r=pinyin下载deb包安装
     language support里输入方式选为fcitx
@@ -14,9 +13,7 @@ sublime3-setting文件包。
 
 2.安装sublime text 3
 
-    sudo add-apt-repository ppa:webupd8team/sublime-text-3
-    sudo apt-get update
-    sudo apt-get install sublime-text-installer
+    登陆sublime text官方，下载sublime text 3安装包，并且安装
 
 3.解决中文输入问题
 
