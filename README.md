@@ -15,7 +15,7 @@ sublime3-setting文件包。
 
     登陆sublime text官方，下载sublime text 3安装包，并且安装
 
-3.解决中文输入问题
+3.开始解决中文输入问题
 
     cd /opt/sublime_text
     sudo touch sublime_imfix.c
